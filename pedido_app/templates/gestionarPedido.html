@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+    
+{% load static %}
+
+<div class="row"> <!--La fila-->
+    
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"> <!-- Columna Izquierda-->
+        <h1>Pedido</h1>
+
+        <div class="card"> <!-- La tarjeta -->
+            <div class="card-body">
+                <form action="registrarPedido/" method="POST"> {% csrf_token %} <!-- Falta action -->
+                    <div class="form-group py-2">
+                        <input type="text" id="numidpedido" name="numidpedido" class="form-control" placeholder="id pedido" minlength="1" maxlength="6" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="numidcliente" name="numidcliente" class="form-control" placeholder="id cliente " maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txtfechapedido" name="txtfechapedido" class="form-control" placeholder="fecha pedido" maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txttotalpedido" name="txttotalpedido" class="form-control" placeholder=" total pedido" maxlength="10" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txtestadopedido" name="txtestadopedido" class="form-control" placeholder="estado pedido" maxlength="50" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txtmetodopago" name="txtmetodopago" class="form-control" placeholder="metodo pago" maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txtdireccionenvio" name="txtdireccionenvio" class="form-control" placeholder="direccion envio" maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-dark">Guardar Pedido</button>
+                    </div>
+                </form>
+            </div>
+        </div> <!-- La tarjeta -->
+
+    </div> <!-- Columna Izquierda-->
+
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"> <!-- Columna derecha -->
+        <h1>Listdo de Pedido</h1>
+        <img class= "w-50" src="{% static "img/perfume5.jpg" %}" alt="Toledo" width=400 height=400>
+
+        <!-- La tabla -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">id pedido</th>
+                    <th scope="col">id cliente</th>
+                    <th scope="col">fecha pedido</th>
+                    <th scope="col">total pedido</th>
+                    <th scope="col">estado pedido</th>
+                    <th scope="col">metodo pago</th>
+                    <th scope="col">direccion envio</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in mispedidos %}
+                    <tr>
+                        <td> {{m.id_pedido}} </td>
+                        <td> {{m.id_cliente}} </td>
+                        <td> {{m.fecha_pedido}} </td>
+                        <td> {{m.total_pedido}} </td>
+                        <td> {{m.estado_pedido}} </td>
+                        <td> {{m.metodo_pago}} </td>
+                        <td> {{m.direccion_envio}} </td>
+                        <td><a href="seleccionarPedido/{{m.id_pedido}}" class="btn btn-secondary">Editar</a></td> <!-- Falta -->
+                        <td><a href="borrarPedido/{{m.id_pedido}}" class="btn btn-dark">Borrar</a></td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <!-- La tabla -->
+    </div> <!-- Columna derecha -->
+
+</div> <!--La fila-->
+{% endblock %}
