@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+{% load static %}
+<div class="row"> <!--La fila-->
+    
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"> <!-- Columna Izquierda-->
+        <h1>Reseña</h1>
+
+        <div class="card"> <!-- La tarjeta -->
+            <div class="card-body">
+                <form action="registrarReseña/" method="POST"> {% csrf_token %} <!-- Falta action -->
+                    <div class="form-group py-2">
+                        <input type="text" id="numidreseña" name="numidreseña" class="form-control" placeholder="id reseña" minlength="1" maxlength="6" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="numidproducto" name="numidproducto" class="form-control" placeholder= "id producto " maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="numidcliente" name="numidcliente" class="form-control" placeholder="id cliente" maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="numcalificacion" name="numcalificacion" class="form-control" placeholder=" calificacion" maxlength="10" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txtcomentario" name="txtcomentario" class="form-control" placeholder="  comentario" maxlength="50" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txtfechareseña" name="txtfechareseña" class="form-control" placeholder=" fecha reseña " maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="txtestado" name="txtestado" class="form-control" placeholder=" estado" maxlength="100" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-dark">Guardar Reseña</button>
+                    </div>
+                </form>
+            </div>
+        </div> <!-- La tarjeta -->
+
+    </div> <!-- Columna Izquierda-->
+
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"> <!-- Columna derecha -->
+        <h1>Listdo de Reseña</h1>
+        <img class= "w-50" src="{% static "img/perfume.jpg" %}" alt="Toledo" width=100 height=200>
+
+        <!-- La tabla -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> id proveedor </th>
+                    <th scope="col"> id producto</th>
+                    <th scope="col">id cliente </th>
+                    <th scope="col">calificacion </th>
+                    <th scope="col">comentario </th>
+                    <th scope="col"> fecha reseña</th>
+                    <th scope="col">estado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in misreseña %}
+                    <tr>
+                        <td> {{m.id_reseña}} </td>
+                        <td> {{m.id_producto}} </td>
+                        <td> {{m.id_cliente}} </td>
+                        <td> {{m.calificacion}} </td>
+                        <td> {{m.comentario}} </td>
+                        <td> {{m.fecha_reseña}} </td>
+                        <td> {{m.estado}} </td>
+                        <td><a href="seleccionarReseña/{{m.id_reseña}}" class="btn btn-secondary">Editar</a></td> <!-- Falta -->
+                        <td><a href="borrarReseña/{{m.id_reseña}}" class="btn btn-dark">Borrar</a></td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <!-- La tabla -->
+    </div> <!-- Columna derecha -->
+
+</div> <!--La fila-->
+{% endblock %}
