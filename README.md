@@ -19,6 +19,16 @@ pedido y editar
 cliente y editar
 ![image](https://github.com/user-attachments/assets/b46a9a5f-6215-4141-b3ec-4624fbcb429b)
 ![image](https://github.com/user-attachments/assets/cc6f2942-ef33-49a2-8538-00cd482637af)
+empleado y editar
+![image](https://github.com/user-attachments/assets/996c5942-ef5f-42b0-aa5a-f932ff2f8591)
+![image](https://github.com/user-attachments/assets/94a90b5d-6a7f-4c00-a3a7-82433730a04c)
+ventas y editar
+![image](https://github.com/user-attachments/assets/7734f168-2d64-4be2-a11b-42d134a149f3)
+![image](https://github.com/user-attachments/assets/5e94a017-e054-4a04-ab21-e8bbf711a2e1)
+
+
+
+
 
 
 
